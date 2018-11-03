@@ -1,0 +1,14 @@
+.navbar-brand{
+	font-size: 30px;
+	font-weight: bold;
+	font-color: white;
+	font-style: italic;
+
+}
+.brand-icon{
+	fill:#ffffff;
+}
+
+.search_icon{
+	align-self: center;
+}
