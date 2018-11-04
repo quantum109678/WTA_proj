@@ -15,23 +15,23 @@
             <h5 class="card-title text-center">Sign Up</h5>
             <form class="form-signup">
               <div class="form-label-group">
-                <input type="text" id="input_name" class="form-control" placeholder="Name " required autofocus>
+                <input type="text" id="input_name" class="form-control" placeholder="Name " name="name" required autofocus>
                 <label for="input_name">Name</label>
               </div>
 
               <div class="form-label-group">
-                <input type="email" id="input_email" class="form-control" placeholder="Email address" required autofocus>
+                <input type="email" id="input_email" class="form-control" placeholder="Email address" name="email" required autofocus>
                 <label for="input_email">Email address</label>
               </div>
 
 
               <div class="form-label-group">
-                <input type="password" id="input_password" class="form-control" placeholder="Set password" required>
+                <input type="password" id="input_password" class="form-control" name="password" placeholder="Set password" required>
                 <label for="input_password">Set password</label>
               </div>
 
                <div class="form-label-group">
-                <input type="password" id="confirm_password" class="form-control" placeholder="Confirm password" required>
+                <input type="password" id="confirm_password" class="form-control" name="cpassword" placeholder="Confirm password" required>
                 <label for="confirm_password">Confirm password</label>
               </div>
 
