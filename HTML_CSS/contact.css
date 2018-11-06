@@ -8,12 +8,13 @@ body{
     margin-top: 5%;
     
     width: 80%;
+
 }
 .contact-form .form-control{
     border-radius:2rem;
     height: 40px;
     width: 300px;
-    margin-top:15px;
+    margin-top:20px;
     font-size: 15px;
 
 }
@@ -23,7 +24,7 @@ body{
 .contact-image img{
     border-radius: 6rem;
     width: 11%;
-    margin-top: -3%;
+    margin-top:-2%;
     transform: rotate(29deg);
 }
 .contact-form form{

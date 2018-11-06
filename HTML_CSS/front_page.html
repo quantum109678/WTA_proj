@@ -2,17 +2,27 @@
 <html>
 <head>
 	<title>Front Page</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="front_page.css">
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
+	
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="front_page.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <style>
+  /* Make the image fully responsive */
+  .carousel-inner img {
+      width: 100%;
+      height: 100%;
+  }
+  </style>
 
 </head>
 <body>
-<div><nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #003399; height: 100px;">
+  <div class="main_class" >
+<div><nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #003399; height: 75px;" >
 
   <span class="navbar-brand">SAHARA
   	<i class="fa fa-bolt"></i>
@@ -24,7 +34,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
   	<form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search for your favourite products" aria-label="Search" style="width: 450px; height: 30px;">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search for your favourite products" aria-label="Search" style="width: 440px; height: 30px;">
       	<a class="fa fa-search" style="color: white; font-size:22px;" href=""></a>
     </form>
 
@@ -68,5 +78,59 @@
     
   </div>
 </nav></div>
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+    <li data-target="#demo" data-slide-to="3"></li>
+    <li data-target="#demo" data-slide-to="4"></li>
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner" style="max-height: 500px; margin-top: 75px;">
+    <div class="carousel-item active">
+      <img src="../img/imgt2.jpeg" style="height: 500px;" >
+      <div class="carousel-caption d-none d-md-block">
+    <h3 style="font-weight: bold;"><span style="color: #ffffff">G</span><span style="color: #000000;">rab the </span><span>best deals on the latest Sma</span><span style="color: #000000">rtpho</span><span style="color: #ffffff">nes</span></h3>
+  </div>
+    </div>
+    <div class="carousel-item" >
+      <img src="../img/img2.jpeg" style="height: 500px; " >
+      <div class="carousel-caption d-none d-md-block" >
+    <h3 style="font-weight: bold;">Choose from the l<span style="color: #009999">atest collection fr</span>om the top brands</h3>
+  </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../img/tv.jpeg" style="height: 500px;"  >
+      <div class="carousel-caption d-none d-md-block">
+    <h3 style="font-weight: bold; color: #000000;">Experience the Best pictures <span style="color: #cca300">at the</span> Best prices</h3>
+  </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../img/hap.png" style="height: 500px;" >
+      <div class="carousel-caption d-none d-md-block">
+    <h3 style="font-weight: bold;">Choose the home appliances which best suite your decor</h3>
+  </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../img/acc.jpg" style="height: 500px;" >
+      <div class="carousel-caption d-none d-md-block">
+    <h3 style="font-weight: bold;">Get <span style="color: #000000;">all the a</span>ccessorie<span style="color: #000000;">s you require at one place</span></h3>
+  </div>
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+</div>
 </body>
 </html>
