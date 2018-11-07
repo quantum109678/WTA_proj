@@ -124,8 +124,7 @@ public class DBUtility {
 		Class.forName(DRIVER);
 		connection = DriverManager.getConnection(JDBC_URL, "root", "root");
 		statement = connection.createStatement();
-		String QueryString = "select * from cellphone where item="
-                +" '"+item +"' ";
+		String QueryString = "select * from cellphone where item="+" '"+item +"' ";
 		rs = statement.executeQuery(QueryString);
 		 
 
@@ -169,6 +168,30 @@ public class DBUtility {
 		      preparedStmt.setString (2, website);
 		      preparedStmt.setString (3, item);
 		      preparedStmt.execute();
+		      conn.close();
+		      return true;
+		    }
+		    catch (SQLException | ClassNotFoundException e) {	
+		    	String msg;
+				if (e instanceof SQLException) {
+					msg = "Query failed!";
+				}
+				else {
+					msg = "Driver not found!";
+				}
+				LOGGER.log(Level.WARNING, msg, e);
+				return false;
+		    }
+	}
+	
+	public static boolean deletefromDBCart(String user,String item) {
+		String query = "DELETE FROM DBCart WHERE item = ?";
+		try {
+		      Class.forName(DRIVER);
+		      Connection conn = DriverManager.getConnection(JDBC_URL, "root", "root");
+		      PreparedStatement pstmt = conn.prepareStatement(query);
+		      pstmt.setString(1, item);
+		      pstmt.executeUpdate();
 		      conn.close();
 		      return true;
 		    }

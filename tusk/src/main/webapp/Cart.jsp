@@ -26,14 +26,17 @@ rs = statement.executeQuery(QueryString);
 %>
 <TABLE cellpadding="15" border="1" style="background-color: #ffffcc;">
 <%
+String user="ashwin";
 while (rs.next()) {
 String rep=rs.getString(1);
 rep=rep.replace(' ', '-');
+String link="delete/"+user+"/"+rs.getString(3)+"";
+
 %>
 <TR>
-<TD><%=rs.getString(1)%></TD>
 <TD><%=rs.getString(2)%></TD>
 <TD><%=rs.getString(3)%></TD>
+<TD> <a href=<%=link %>>Delete</a> </TD>
 </TR>
 <% } %>
 <%

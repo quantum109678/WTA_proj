@@ -96,10 +96,21 @@ public class IndexController {
 		//return "redirect:http://localhost:2080/tusk/login.jsp";
 		return null;
 	}
+	
+	@RequestMapping(value = " /delete/{user}/{item}", method=RequestMethod.GET)
+	public String deletefromCart(@PathVariable String user,@PathVariable String item){
+		boolean verification = DBUtility.deletefromDBCart(user,item);
+		if(verification) {
+			return "redirect:http://localhost:2080/tusk/Cart.jsp";
+		}
+		return "redirect:http://localhost:2080/tusk/login.jsp";
+	}
+	
 	@RequestMapping("/cart")
 	public String gotocart() {
 		return "redirect:http://localhost:2080/tusk/Cart.jsp";
 	}
+	
 	@RequestMapping("/gotodb")
 	public String gotoproducts() {
 		return "redirect:http://localhost:2080/tusk/db.jsp";
