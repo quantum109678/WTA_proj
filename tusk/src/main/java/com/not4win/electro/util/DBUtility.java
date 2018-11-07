@@ -1,10 +1,16 @@
 package com.not4win.electro.util;
+import java.awt.font.NumericShaper.Range;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.not4win.electro.model.Feedback;
+import com.not4win.electro.api.Store;
 import com.not4win.electro.model.User;
+import com.sun.tools.javac.util.List;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 public class DBUtility {
@@ -102,5 +108,80 @@ public class DBUtility {
 			LOGGER.log(Level.WARNING, msg, e);
 			return false;
 	    }
+	}
+	
+	public static ArrayList<String> getData(String item){
+		
+		ArrayList<String> blist = new ArrayList<String>(4);
+		String s1="";
+		String s2="";
+		String s3="";
+		String s4="";
+		try {
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet rs = null;
+		Class.forName(DRIVER);
+		connection = DriverManager.getConnection(JDBC_URL, "root", "root");
+		statement = connection.createStatement();
+		String QueryString = "select * from cellphone where item="
+                +" '"+item +"' ";
+		rs = statement.executeQuery(QueryString);
+		 
+
+		String price="";
+		String image="";
+		
+		while (rs.next()) {
+		String store1= rs.getString(1);
+		String store2= rs.getString(2);
+		String store3= rs.getString(3);
+		String store4= rs.getString(4);
+		Gson gson=new Gson();
+		ArrayList<Store> stores=gson.fromJson(store4, new TypeToken<ArrayList<Store>>(){}.getType());
+		for(Store store:stores) {
+			s1+=store.getImage()+" ";
+			s2+=store.getPrice()+" ";
+			s3+=store.getUrl()+" ";
+			s4+=store.getWebsite()+" ";
+	
+		}
+		}
+		blist.add(s1);
+		blist.add(s2);
+		blist.add(s3);
+		blist.add(s4);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+		return blist;
+	}
+	public static boolean addtoDBCart(String user,String website,String item) {
+		try {
+		      Class.forName(DRIVER);
+		      Connection conn = DriverManager.getConnection(JDBC_URL, "root", "root");
+		      String query = "INSERT INTO DBCart (account,website,item)" 
+		    		  + " VALUES(?, ?, ?)";
+		      PreparedStatement preparedStmt = conn.prepareStatement(query);
+		      preparedStmt.setString (1, user);
+		      preparedStmt.setString (2, website);
+		      preparedStmt.setString (3, item);
+		      preparedStmt.execute();
+		      conn.close();
+		      return true;
+		    }
+		    catch (SQLException | ClassNotFoundException e) {	
+		    	String msg;
+				if (e instanceof SQLException) {
+					msg = "Query failed!";
+				}
+				else {
+					msg = "Driver not found!";
+				}
+				LOGGER.log(Level.WARNING, msg, e);
+				return false;
+		    }
 	}
 }

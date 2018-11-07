@@ -1,13 +1,21 @@
 package com.not4win.electro;
 
+import java.util.ArrayList;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.not4win.electro.api.Store;
 import com.not4win.electro.model.Feedback;
 import com.not4win.electro.model.User;
 import com.not4win.electro.util.DBUtility;
+import com.sun.net.httpserver.Authenticator.Success;
+import com.sun.tools.javac.util.List;
 
 @Controller
 public class IndexController {
@@ -65,15 +73,45 @@ public class IndexController {
 			return "signup.jsp";
 		}
 	}
-	
-	@RequestMapping("/Feedback")
-	public void signUp() {
-		Feedback fb = new Feedback();
-		user.setAadhar("12345678");
-		user.setAddress("mangalore");
-		user.setFName("ashwin");
-		user.setGender("male");
-		user.setLName("nayak");
-		user.setPno("93423423");		
+	@RequestMapping("/play")
+	public ModelAndView displayProduct(@RequestParam("hi") String item) {
+		item=item.replace('-', ' ');
+		ArrayList<String> store=DBUtility.getData(item);
+		item=item.replace(' ', '-');
+		store.add(0,item);
+		System.out.println(store);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("product.jsp");
+		mv.addObject("result", store);
+		return mv;
 	}
+	
+	@RequestMapping(value = " /buy/{user}/{website}/{item}", method=RequestMethod.GET)
+	public String addtoCart(@PathVariable String user,@PathVariable String website,@PathVariable String item){
+		boolean verification = DBUtility.addtoDBCart(user,website,item);
+		if(verification) {
+			return "redirect:http://localhost:2080/tusk/successfulCart.jsp";
+		}
+	//fetch order
+		//return "redirect:http://localhost:2080/tusk/login.jsp";
+		return null;
+	}
+	@RequestMapping("/cart")
+	public String gotocart() {
+		return "redirect:http://localhost:2080/tusk/Cart.jsp";
+	}
+	@RequestMapping("/gotodb")
+	public String gotoproducts() {
+		return "redirect:http://localhost:2080/tusk/db.jsp";
+	}
+//	@RequestMapping("/Feedback")
+//	public void signUp() {
+//		Feedback fb = new Feedback();
+//		user.setAadhar("12345678");
+//		user.setAddress("mangalore");
+//		user.setFName("ashwin");
+//		user.setGender("male");
+//		user.setLName("nayak");
+//		user.setPno("93423423");		
+//	}
 }
